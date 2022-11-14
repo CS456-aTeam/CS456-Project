@@ -21,9 +21,6 @@ function App() {
 
       </Router>
 
-      <React.Fragment>
-        <Cards />
-      </React.Fragment>
     </>
       
  
