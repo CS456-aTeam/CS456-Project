@@ -5,8 +5,9 @@ import './Cards.css'
 function Cards() {
   return (
     <div className = "cards">
-        <h1>Charts</h1>
-        <div className = "cards__container">
+        <h1>Enter Value to Create a Chart</h1>
+        
+        {/* <div className = "cards__container">
             <div className = "cards__wrapper">
                 <ul className = "cards__items">
                     <CardItem 
@@ -29,8 +30,8 @@ function Cards() {
                     />
                 </ul>
             </div>
-        </div>
-
+        </div> */}
+        
     </div>
   )
 }

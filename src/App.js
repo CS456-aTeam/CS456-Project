@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import Line from './components/pages/Line';
 import Bar from './components/pages/Bar';
 import Pie from './components/pages/Pie';
+import Cards from './components/Cards';
 function App() {
   return (
     <>
@@ -17,7 +18,12 @@ function App() {
           <Route path="/bar" element={<Bar />} />
           <Route path="/pie" element={<Pie />} />
         </Routes>
+
       </Router>
+
+      <React.Fragment>
+        <Cards />
+      </React.Fragment>
     </>
       
  

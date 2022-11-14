@@ -1,6 +1,6 @@
 .cards {
-    
-    padding: 4rem;
+    height: 100vh;
+    padding: 2rem;
     background: #fff;
   }
   
@@ -17,7 +17,7 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    max-width: 1120px;
+    max-width: 100px;
     width: 90%;
 
     margin: 0 auto;
@@ -25,13 +25,21 @@
   
   .cards__wrapper {
     position: relative;
-    margin: 20px 0 45px;
+    margin: 100px 0 45px;
   }
   
   .cards__items {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   
+  .cards__part1 {
+    margin-bottom: 24px;
+    background:#1f98f4;
+  }
+  .cards__part2 {
+    margin-bottom: 24px;
+  }
+
   .cards__item {
     display: flex;
     flex: 1;
