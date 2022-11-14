@@ -1,1 +1,5 @@
-This project aims to create a simple data visualization tool that is accessible to users across the color vision spectrum.
+CREATE THE LAYOUT FOR THE WEBSITE
+
+Reminder:
+Install react-router-dom: npm i react-router-dom
+test test 
