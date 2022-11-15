@@ -7,9 +7,8 @@ import Cards from "../Cards";
 function Home () {
     return (
         <>
-            <Section />
+          
             <Cards />
-            <Footer />
         </>
     );
 }
