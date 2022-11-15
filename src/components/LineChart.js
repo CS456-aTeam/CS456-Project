@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@mui/material/Box'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -30,7 +31,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Line Chart',
+      text: 'Line Chart',
     },
   },
 };
@@ -52,18 +53,16 @@ export const data = {
         borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
-      {
-        label: 'Dataset 3',
-        data: [10,30,10,14],
-        borderColor: 'rgb(53, 162, 100)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
     ],
   };
 
 
 const LineChart = () => {
-    return <Line options={options} data={data} />;
+    return (
+      <Box p={20}>
+      <Line options={options} data={data} />
+      </Box>
+    )    
 }
 
 export default LineChart;
