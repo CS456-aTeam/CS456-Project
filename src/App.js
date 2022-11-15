@@ -7,23 +7,23 @@ import Line from './components/pages/Line';
 import Bar from './components/pages/Bar';
 import Pie from './components/pages/Pie';
 import Cards from './components/Cards';
+import BarChart from './components/BarChart';
+
 function App() {
   return (
-    <>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/lines" element={<Line />} />
-          <Route path="/bar" element={<Bar />} />
-          <Route path="/pie" element={<Pie />} />
-        </Routes>
+    // <>
+    //   <Router>
+    //     <Navbar />
+    //     <Routes>
+    //       <Route path="/" element={<Home />} />
+    //       <Route path="/lines" element={<Line />} />
+    //       <Route path="/bar" element={<Bar />} />
+    //       <Route path="/pie" element={<Pie />} />
+    //     </Routes>
 
-      </Router>
-
-    </>
-      
- 
+    //   </Router>
+    // </>
+    <BarChart />
   );
 }
 
