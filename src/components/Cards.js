@@ -143,7 +143,7 @@ const Cards = () => {
      <div className = "div2">
       <h1>{namechart.anamechart || "Choose a Name For Your Chart"}</h1>
       <h2>For chart team: Start from line 138 in the file "Cards.js"</h2>
-      <BarChart />
+      <BarChart xyPairs={array} />
     </div>
     </>
     

@@ -24,37 +24,41 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
+const BarChart = (props) => {
+  let labels = [];
+  let quantities = [];
+  for (const pair of props.xyPairs) {
+    labels.push(pair.valX);
+    quantities.push(pair.valY);
+  }
+  //const colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#2f27f8'];
+  const colors = palette('cb-Spectral', labels.length).map((s) => `#${s}`);
+  const patterns = pattern.generate(colors);
+
+  
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
+      },
     },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
+  };
 
-const labels = ['A', 'B', 'C', 'D', 'F'];
-const qtys = [6, 11, 14, 9, 5];
+  const data = {
+    labels,
+    datasets: [{
+      label: 'Grade Distribution',
+      data: quantities,
+      backgroundColor: patterns,
+    }],
+  };
 
-//const colors = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#2f27f8'];
-const colors = palette('cb-Spectral', labels.length).map((s) => `#${s}`);
-const patterns = pattern.generate(colors);
-
-export const data = {
-  labels,
-  datasets: [{
-    label: 'Grade Distribution',
-    data: qtys,
-    backgroundColor: patterns,
-  }],
-};
-
-const BarChart = () => {
-    return <Bar options={options} data={data} />;
+  return <Bar options={options} data={data} />;
 }
 
 export default BarChart;
