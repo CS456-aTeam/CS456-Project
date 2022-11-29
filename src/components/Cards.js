@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { Link } from "react-router-dom";
 import BarChart from "./BarChart.js";
 import './Cards.css';
+import LineChart from './LineChart.js';
 
 
 const Cards = () => {
