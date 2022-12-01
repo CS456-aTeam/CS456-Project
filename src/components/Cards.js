@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import BarChart from "./BarChart.js";
 import './Cards.css';
 import LineChart from './LineChart.js';
-import { InputTable } from './InputTable.js'
+import { InputTable } from './InputTable.js';
+import ColorBar from './ColorBar.js';
 
 function counter() {
   return counter.count++;
@@ -44,6 +45,7 @@ const Cards = () => {
 
       <div className="div3">
         <h2>Color profile</h2>
+        <ColorBar/>
       </div>
 
       <div className="div2">

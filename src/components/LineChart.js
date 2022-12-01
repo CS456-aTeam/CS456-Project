@@ -12,7 +12,6 @@ import {
 import { Line } from 'react-chartjs-2';
 import palette from 'google-palette'
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
