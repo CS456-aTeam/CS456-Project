@@ -1,10 +1,10 @@
 function ColorBar(){
   return (
-    <div>
-      <div style={{display:'inline-block', width: '25%', backgroundColor: "red"}} > Red </div>
-      <div style={{display:'inline-block', width: '25%', backgroundColor: "blue"}} > Blue </div>
-      <div style={{display:'inline-block', width: '25%', backgroundColor: "yellow"}} > Yellow </div>
-      <div style={{display:'inline-block', width: '25%', backgroundColor: "black"}} > Black </div>
+    <div style={{height: '25px'}}>
+      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#D81B60"}} > </div>
+      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#1E88E5"}} > </div>
+      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#FFC107"}} > </div>
+      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#004D40"}} > </div>
     </div>
     
   );
