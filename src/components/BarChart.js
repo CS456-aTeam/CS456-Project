@@ -28,8 +28,8 @@ const BarChart = (props) => {
   let labels = [];
   let quantities = [];
   for (const pair of props.xyPairs) {
-    labels.push(pair.valX);
-    quantities.push(pair.valY);
+    labels.push(pair.x);
+    quantities.push(pair.y);
   }
   const colors = palette('cb-Spectral', labels.length).map((s) => `#${s}`);
   const patterns = pattern.generate(colors);
