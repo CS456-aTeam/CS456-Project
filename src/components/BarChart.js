@@ -43,7 +43,7 @@ const BarChart = (props) => {
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
+        text: '',
       },
     },
   };
@@ -51,7 +51,7 @@ const BarChart = (props) => {
   const data = {
     labels,
     datasets: [{
-      label: 'Grade Distribution',
+      label: '',
       data: quantities,
       backgroundColor: patterns,
     }],
