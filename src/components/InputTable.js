@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const InputTable = (props) => {
     return <table>
         <tbody>
@@ -12,9 +10,9 @@ export const InputTable = (props) => {
             </tr>
             {props.rows.map((row, index) => {
                 function keyHandler(event) {
-                    if (event.key == 'Enter') {
+                    if (event.key === 'Enter') {
                         props.onAddRow(index + !event.shiftKey);
-                    } else if (event.key == 'Delete' && event.ctrlKey && index > 0) {
+                    } else if (event.key === 'Delete' && event.ctrlKey && index > 0) {
                         props.onDeleteRow(index);
                     }
                 }
@@ -29,7 +27,7 @@ export const InputTable = (props) => {
                     <td>
                         <input
                             value={row.y}
-                            onInput={(event) => props.onRowChanged(index, 'y', event.target.value)}
+                            onInput={(event) => props.onRowChanged(index, 'y', event.target.value.replace(/[^0-9]/, ''))}
                             onKeyDown={(keyHandler)} />
                     </td>
                 </tr>
