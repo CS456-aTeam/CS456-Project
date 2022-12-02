@@ -67,13 +67,14 @@ tr.currRow > td > input {
 }
 
 .flexbox {
-  width: 14%;
+  width: 18%;
   float: right;
   padding: 3rem;
   background: #fff;
-  display: flex;
   align-items: right;
   justify-content: right;
   flex-direction: column;
   gap: 20px 5px;
+  display: flex;
+
 }

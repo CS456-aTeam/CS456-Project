@@ -18,6 +18,7 @@ const Cards = () => {
   let [title, setTitle] = useState("");
   let [xAxisLabel, setXAxisLabel] = useState("");
   let [yAxisLabel, setYAxisLabel] = useState("");
+  const [PaletteColors, setPaletteColors] = useState("cb-Spectral");
 
   function onRowChange(row_index, attr, value) {
     setTableData(tableData.map((row, r_index) => (r_index != row_index) ?
@@ -33,6 +34,11 @@ const Cards = () => {
     setTableData([...tableData.slice(0, index), ...tableData.slice(index + 1)]);
   }
 
+  const Update_Palette = event => {
+    console.log(event.target.value);
+    setPaletteColors(event.target.value);
+  }
+
   return (
     <>
       <InputTable
@@ -45,24 +51,52 @@ const Cards = () => {
         onYAxisLabelChange={(val) => { setYAxisLabel(val) }} />
 
       <div className="flexbox">
-        <ColorBar colors= {palette('mpn65', 4).map((s) => `#${s}`)}/>
-
-
-
-        <ColorBar colors= {palette('tol-rainbow', 4).map((s) => `#${s}`)}/>
-
-
-        <ColorBar colors= {palette('cb-YlOrRd', 4).map((s) => `#${s}`)}/>
-        <ColorBar colors= {palette('cb-Spectral', 4).map((s) => `#${s}`)}/>
-        <ColorBar colors= {palette('cb-Set3', 4).map((s) => `#${s}`)}/>
-        {/* <ColorBar colors= {palette('Grayscale', 4).map((s) => `#${s}`)}/> */}
-        <ColorBar colors= {palette('sol-base', 4).map((s) => `#${s}`)}/>
-        <ColorBar colors= {palette('sol-accent', 4).map((s) => `#${s}`)}/>
-        
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="mpn65" 
+                                checked = { PaletteColors === 'mpn65'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('mpn65', 4).map((s) => `#${s}`)}/>
+        </div>
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="tol-rainbow"  
+                                checked = { PaletteColors === 'tol-rainbow'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('tol-rainbow', 4).map((s) => `#${s}`)}/>
+        </div>
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="cb-YlOrRd"   
+                                checked = { PaletteColors === 'cb-YlOrRd'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('cb-YlOrRd', 4).map((s) => `#${s}`)}/>
+        </div>
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="cb-Spectral"   
+                                checked = { PaletteColors === 'cb-Spectral'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('cb-Spectral', 4).map((s) => `#${s}`)}/>
+        </div>
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="cb-Set3"   
+                                checked = { PaletteColors === 'cb-Set3'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('cb-Set3', 4).map((s) => `#${s}`)}/> 
+        </div>
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="sol-base"   
+                                checked = { PaletteColors === 'sol-base'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('sol-base', 4).map((s) => `#${s}`)}/>
+        </div>
+        <div style={{ display:"flex", flexDirection:"row", alignItems:"center"}}>
+          <input type="radio" value="sol-accent"   
+                                checked = { PaletteColors === 'sol-accent'} 
+                                onChange = { Update_Palette }/>
+          <ColorBar colors= {palette('sol-accent', 4).map((s) => `#${s}`)}/>  
+        </div>     
       </div>
 
       <div className="div2">
-        <BarChart xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} />
+        <BarChart xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors}/>
       </div>
     </>
   )

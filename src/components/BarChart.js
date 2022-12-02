@@ -31,7 +31,9 @@ const BarChart = (props) => {
     labels.push(pair.x);
     quantities.push(pair.y);
   }
-  const colors = palette('cb-Spectral', labels.length).map((s) => `#${s}`);
+
+
+  const colors = palette(props.PaletteSelected, labels.length).map((s) => `#${s}`);
   const patterns = pattern.generate(colors);
 
   
