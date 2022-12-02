@@ -5,6 +5,7 @@ import './Cards.css';
 import LineChart from './LineChart.js';
 import { InputTable } from './InputTable.js';
 import ColorBar from './ColorBar.js';
+import palette from 'google-palette'
 
 function counter() {
   return counter.count++;
@@ -33,9 +34,21 @@ const Cards = () => {
     <>
     <InputTable rows={tableData} onRowChanged={onRowChanged} onAddRow={onAddRow} onDeleteRow={onDeleteRow} />
 
-      <div className="div3">
-        <h2>Color profile</h2>
-        <ColorBar/>
+      <div className="flexbox">
+        <ColorBar colors= {palette('mpn65', 4).map((s) => `#${s}`)}/>
+
+
+
+        <ColorBar colors= {palette('tol-rainbow', 4).map((s) => `#${s}`)}/>
+
+
+        <ColorBar colors= {palette('cb-YlOrRd', 4).map((s) => `#${s}`)}/>
+        <ColorBar colors= {palette('cb-Spectral', 4).map((s) => `#${s}`)}/>
+        <ColorBar colors= {palette('cb-Set3', 4).map((s) => `#${s}`)}/>
+        {/* <ColorBar colors= {palette('Grayscale', 4).map((s) => `#${s}`)}/> */}
+        <ColorBar colors= {palette('sol-base', 4).map((s) => `#${s}`)}/>
+        <ColorBar colors= {palette('sol-accent', 4).map((s) => `#${s}`)}/>
+        
       </div>
 
       <div className="div2">

@@ -1,12 +1,11 @@
-function ColorBar(){
+function ColorBar(props){
   return (
     <div style={{height: '25px'}}>
-      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#D81B60"}} > </div>
-      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#1E88E5"}} > </div>
-      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#FFC107"}} > </div>
-      <div style={{display:'inline-block', width: '25%', height: '100%',  background: "#004D40"}} > </div>
+      {props.colors.map((color, index) =>
+        <div key={index} style={{borderRadius: '30px' ,display:'inline-block', width: '30px', height: '30px',  background: color}}></div>
+      )}
     </div>
-    
+        
   );
 }
 

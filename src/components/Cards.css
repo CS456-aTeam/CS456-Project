@@ -65,3 +65,15 @@ input:focus-within {
 .div3>h2 {
   text-align: center;
 }
+
+.flexbox {
+  width: 14%;
+  float: right;
+  padding: 3rem;
+  background: #fff;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+  flex-direction: column;
+  gap: 20px 5px;
+}
