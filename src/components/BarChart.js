@@ -43,7 +43,7 @@ const BarChart = (props) => {
       },
       title: {
         display: true,
-        text: '',
+        text: props.title,
       },
     },
   };
@@ -51,7 +51,7 @@ const BarChart = (props) => {
   const data = {
     labels,
     datasets: [{
-      label: '',
+      label: props.yAxisLabel,
       data: quantities,
       backgroundColor: patterns,
     }],

@@ -10,7 +10,7 @@
 }
 
 table {
-  display: inline;
+  display: inline-flex;
 }
 
 h1 {
@@ -30,7 +30,7 @@ input {
   border: 2px solid transparent;
 }
 
-input:focus-within {
+tr.currRow > td > input {
   border: 1px solid aqua;
 }
 
