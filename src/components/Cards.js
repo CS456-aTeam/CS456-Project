@@ -5,6 +5,7 @@ import './Cards.css';
 import LineChart from './LineChart.js';
 import { InputTable } from './InputTable.js';
 import ColorBar from './ColorBar.js';
+import TabContainer from './TabContainer.js';
 import palette from 'google-palette'
 
 function counter() {
@@ -96,7 +97,8 @@ const Cards = () => {
       </div>
 
       <div className="div2">
-        <BarChart xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors}/>
+        {/*<BarChart xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors}/>*/}
+        <TabContainer xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors} />
       </div>
     </>
   )

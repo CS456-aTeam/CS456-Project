@@ -26,10 +26,10 @@ const LineChart = (props) => {
   let labels = [];
   let quantities = [];
   for (const pair of props.xyPairs) {
-    labels.push(pair.valX);
-    quantities.push(pair.valY);
+    labels.push(pair.x);
+    quantities.push(pair.y);
   }
-  const colors = palette('cb-Spectral', labels.length).map((s) => `#${s}`);
+  const colors = palette(props.PaletteSelected, labels.length).map((s) => `#${s}`);
   
   const options = {
     responsive: true,
@@ -39,7 +39,7 @@ const LineChart = (props) => {
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
+        text: props.title,
       },
     },
   };
@@ -47,7 +47,7 @@ const LineChart = (props) => {
   const data = {
     labels,
     datasets: [{
-      label: 'Grade Distribution',
+      label: props.yAxisLabel,
       data: quantities,
       backgroundColor: colors,
     }],
