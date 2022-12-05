@@ -4,53 +4,61 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
+  ArcElement,
   Title,
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
+import pattern from 'patternomaly'
+import palette from 'google-palette'
+
 
 ChartJS.register(
   CategoryScale,
   LinearScale,
   BarElement,
+  ArcElement,
   Title,
   Tooltip,
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Bar Chart',
-    },
-  },
-};
+const BarChart = (props) => {
+  let labels = [];
+  let quantities = [];
+  for (const pair of props.xyPairs) {
+    labels.push(pair.x);
+    quantities.push(pair.y);
+  }
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
+  const colors = palette(props.PaletteSelected, labels.length).map((s) => `#${s}`);
+  const patterns = pattern.generate(colors);
 
-const BarChart = () => {
+  
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: props.title,
+      },
+    },
+  };
+
+  const data = {
+    labels,
+    datasets: [{
+      label: props.yAxisLabel,
+      data: quantities,
+      backgroundColor: patterns,
+    }],
+  };
+
   return <Bar options={options} data={data} />;
 }
 

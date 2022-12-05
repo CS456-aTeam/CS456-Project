@@ -1,5 +1,4 @@
 import React from 'react';
-import Box from '@mui/material/Box'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,7 +10,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-
+import palette from 'google-palette'
 
 ChartJS.register(
   CategoryScale,
@@ -23,46 +22,38 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Line Chart',
-    },
-  },
-};
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: [1,2,3,4,5,6,7,8],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+const LineChart = (props) => {
+  let labels = [];
+  let quantities = [];
+  for (const pair of props.xyPairs) {
+    labels.push(pair.valX);
+    quantities.push(pair.valY);
+  }
+  const colors = palette('cb-Spectral', labels.length).map((s) => `#${s}`);
+  
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
       },
-      {
-        label: 'Dataset 2',
-        data: [4,5,6,7,5,4,3,2,1],
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      title: {
+        display: true,
+        text: 'Chart.js Bar Chart',
       },
-    ],
+    },
   };
 
+  const data = {
+    labels,
+    datasets: [{
+      label: 'Grade Distribution',
+      data: quantities,
+      backgroundColor: colors,
+    }],
+  };
 
-const LineChart = () => {
-    return (
-      <Box p={20}>
-      <Line options={options} data={data} />
-      </Box>
-    )    
+  return <Line options={options} data={data} />;
 }
 
 export default LineChart;
