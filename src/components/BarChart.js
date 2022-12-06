@@ -10,8 +10,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
-import pattern from 'patternomaly'
-import palette from 'google-palette'
+import pattern from 'patternomaly';
+import palette from 'google-palette';
 
 
 ChartJS.register(

@@ -5,6 +5,7 @@ import './Cards.css';
 import LineChart from './LineChart.js';
 import { InputTable } from './InputTable.js';
 import ColorBar from './ColorBar.js';
+import TabContainer from './TabContainer.js';
 import palette from 'google-palette'
 import Grid from '@mui/material/Grid';
 import Stack from "@mui/material/Stack";
@@ -63,7 +64,7 @@ const Cards = () => {
         <Grid item xs={7}>
           <Box
           sx={{m: 3}}>
-          <BarChart xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors}/>
+          <TabContainer xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors} />
           </Box>
           <Stack direction="row" spacing={2}>
           <input type="radio" value="mpn65" 
