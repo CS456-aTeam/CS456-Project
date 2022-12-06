@@ -18,7 +18,7 @@ h1 {
   font-size: 60px;
   word-wrap: break-word;
 }
-
+/* 
 input {
   border: none;
   box-shadow: 0px 0px 10px rgba(67, 65, 65, .4);
@@ -28,7 +28,7 @@ input {
   border-radius: 10px;
   outline: none;
   border: 2px solid transparent;
-}
+} */
 
 tr.currRow > td > input {
   border: 1px solid aqua;
