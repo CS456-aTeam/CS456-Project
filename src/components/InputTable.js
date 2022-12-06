@@ -18,14 +18,48 @@ export const InputTable = (props) => {
   let [currRow, setCurrRow] = useState(0);
   return (
     <div>
+    {/* Buttons */}
+    <Box
+        sx={{
+          "& > :not(style)": { m: 3 },
+        }} display="flex" justifyContent="center"
+      >
+        <Stack direction="row" spacing={3}>
+          <Button
+            startIcon={<AddIcon />}
+            variant="outlined"
+            onClick={() => props.onAddRow(currRow)}
+          >
+            Add Row Above
+          </Button>
+          <Button
+            startIcon={<AddIcon />}
+            variant="outlined"
+            onClick={() => props.onAddRow(currRow + 1)}
+            type="button"
+          >
+            Add Row Below
+          </Button>
+          <Button
+            startIcon={<DeleteIcon />}
+            variant="outlined"
+            onClick={() => props.onDeleteRow(currRow)}
+            type="button"
+          >
+            Delete Row
+          </Button>
+        </Stack>
+      </Box>
       <Box display="flex" justifyContent="center">
         <Input
           placeholder="Title"
           onInput={(event) => props.onTitleChange(event.target.value)}
         />
       </Box>
+
+      {/* Input Table */}
       <TableContainer>
-        <Table sx={{ minWidth: 540 }} aria-label="simple table">
+        <Table sx={{ minWidth: 400 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>
@@ -110,37 +144,7 @@ export const InputTable = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box
-        sx={{
-          "& > :not(style)": { m: 3 },
-        }} display="flex" justifyContent="center"
-      >
-        <Stack direction="row" spacing={3}>
-          <Button
-            startIcon={<AddIcon />}
-            variant="outlined"
-            onClick={() => props.onAddRow(currRow)}
-          >
-            Add Row Above
-          </Button>
-          <Button
-            startIcon={<AddIcon />}
-            variant="outlined"
-            onClick={() => props.onAddRow(currRow + 1)}
-            type="button"
-          >
-            Add Row Below
-          </Button>
-          <Button
-            startIcon={<DeleteIcon />}
-            variant="outlined"
-            onClick={() => props.onDeleteRow(currRow)}
-            type="button"
-          >
-            Delete Row
-          </Button>
-        </Stack>
-      </Box>
+      
     </div>
   );
 };
