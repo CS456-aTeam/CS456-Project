@@ -16,6 +16,12 @@ import TextField from '@mui/material/TextField';
 
 export const InputTable = (props) => {
     let [currRow, setCurrRow] = useState(0);
+
+    function rowDeleter(row) {
+        props.onDeleteRow(row);
+        setCurrRow(Math.min(currRow, props.rows.length - 2));
+    }
+
     return (
         <div>
             <Box
@@ -41,7 +47,7 @@ export const InputTable = (props) => {
                                 if (event.key === 'Enter') {
                                     props.onAddRow(index + !event.shiftKey);
                                 } else if (event.key === 'Delete' && event.ctrlKey) {
-                                    props.onDeleteRow(index);
+                                    rowDeleter(index);
                                 }
                             }
                             return <TableRow key={row.key} className={(currRow === index) ? 'currRow' : ''}>
@@ -72,7 +78,7 @@ export const InputTable = (props) => {
                 <Stack direction="row" spacing={3}>
                     <Button startIcon={<AddIcon />} variant="outlined" onClick={() => props.onAddRow(currRow)} >Add Row Above</Button>
                     <Button startIcon={<AddIcon />} variant="outlined" onClick={() => props.onAddRow(currRow + 1)} type="button">Add Row Below</Button>
-                    <Button startIcon={<DeleteIcon />} variant="outlined" onClick={() => props.onDeleteRow(currRow)} type="button">Delete Row</Button>
+                    <Button startIcon={<DeleteIcon />} variant="outlined" onClick={() => rowDeleter(currRow)} type="button">Delete Row</Button>
                 </Stack>
             </Box>
         </div>
