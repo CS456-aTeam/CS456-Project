@@ -1,6 +1,6 @@
 function ColorBar(props){
   return (
-    <div style={{height: '30px'}}>
+    <div style={{height: '20px'}}>
       {props.colors.map((color, index) =>
         <div key={index} style={{borderRadius: '30px' ,display:'inline-block', width: '25px', height: '25px',  background: color}}></div>
       )}
