@@ -130,11 +130,12 @@ export const InputTable = (props) => {
                       variant="outlined"
                       autoFocus
                       value={row.y}
-                      onInput={(event) =>
-                        props.onRowChange(
+                      onInput={(event) => props.onRowChange(
                           index,
                           "y",
-                          event.target.value.replace(/[^0-9]/, "")
+                          (/^[0-9]*\.?[0-9]*$/.test(event.target.value))?
+                            event.target.value
+                            : row.y
                         )
                       }
                       onFocus={() => {
