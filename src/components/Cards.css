@@ -30,8 +30,8 @@ input {
   border: 2px solid transparent;
 } */
 
-tr.currRow > td > input {
-  border: 1px solid aqua;
+tr.currRow input {
+  background-color: #dddddd;
 }
 
 .div2 {

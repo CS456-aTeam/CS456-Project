@@ -16,10 +16,16 @@ import TextField from "@mui/material/TextField";
 
 export const InputTable = (props) => {
   let [currRow, setCurrRow] = useState(0);
+
+  function rowDeleter(row) {
+    props.onDeleteRow(row);
+    setCurrRow(Math.min(currRow, props.rows.length - 2));
+  }
+
   return (
     <div>
-    {/* Buttons */}
-    <Box
+      {/* Buttons */}
+      <Box
         sx={{
           "& > :not(style)": { m: 3 },
         }} display="flex" justifyContent="center"
@@ -48,7 +54,7 @@ export const InputTable = (props) => {
             startIcon={<DeleteIcon />}
             variant="outlined"
             style={{ border: '2px solid' }}
-            onClick={() => props.onDeleteRow(currRow)}
+            onClick={() => rowDeleter(currRow)}
             type="button"
           >
             <p font-weight= "bold">Delete Row</p>
@@ -68,23 +74,23 @@ export const InputTable = (props) => {
           <TableHead>
             <TableRow>
               <TableCell>
-              <Box display="flex" justifyContent="center">
-                <Input
-                  placeholder="X Axis Label"
-                  onInput={(event) =>
-                    props.onXAxisLabelChange(event.target.value)
-                  }
-                />
+                <Box display="flex" justifyContent="center">
+                  <Input
+                    placeholder="X Axis Label"
+                    onInput={(event) =>
+                      props.onXAxisLabelChange(event.target.value)
+                    }
+                  />
                 </Box>
               </TableCell>
               <TableCell>
-              <Box display="flex" justifyContent="center">
-                <Input
-                  placeholder="Y Axis Label"
-                  onInput={(event) =>
-                    props.onYAxisLabelChange(event.target.value)
-                  }
-                />
+                <Box display="flex" justifyContent="center">
+                  <Input
+                    placeholder="Y Axis Label"
+                    onInput={(event) =>
+                      props.onYAxisLabelChange(event.target.value)
+                    }
+                  />
                 </Box>
               </TableCell>
             </TableRow>
@@ -95,7 +101,7 @@ export const InputTable = (props) => {
                 if (event.key === "Enter") {
                   props.onAddRow(index + !event.shiftKey);
                 } else if (event.key === "Delete" && event.ctrlKey) {
-                  props.onDeleteRow(index);
+                  rowDeleter(index);
                 }
               }
               return (
@@ -104,43 +110,43 @@ export const InputTable = (props) => {
                   className={currRow === index ? "currRow" : ""}
                 >
                   <TableCell>
-                  <Box display="flex" justifyContent="center">
-                    <TextField
-                      id="outlined-basic"
-                      label="x value"
-                      variant="outlined"
-                      autoFocus
-                      value={row.x}
-                      onInput={(event) =>
-                        props.onRowChange(index, "x", event.target.value)
-                      }
-                      onFocus={() => {
-                        setCurrRow(index);
-                      }}
-                      onKeyDown={keyHandler}
-                    />
+                    <Box display="flex" justifyContent="center">
+                      <TextField
+                        id="outlined-basic"
+                        label="x value"
+                        variant="outlined"
+                        autoFocus
+                        value={row.x}
+                        onInput={(event) =>
+                          props.onRowChange(index, "x", event.target.value)
+                        }
+                        onFocus={() => {
+                          setCurrRow(index);
+                        }}
+                        onKeyDown={keyHandler}
+                      />
                     </Box>
                   </TableCell>
                   <TableCell>
-                  <Box display="flex" justifyContent="center">
-                    <TextField
-                      id="outlined-basic"
-                      label="y value"
-                      variant="outlined"
-                      autoFocus
-                      value={row.y}
-                      onInput={(event) =>
-                        props.onRowChange(
+                    <Box display="flex" justifyContent="center">
+                      <TextField
+                        id="outlined-basic"
+                        label="y value"
+                        variant="outlined"
+                        value={row.y}
+                        onInput={(event) => props.onRowChange(
                           index,
                           "y",
-                          event.target.value.replace(/[^0-9]/, "")
+                          (/^[0-9]*\.?[0-9]*$/.test(event.target.value)) ?
+                            event.target.value
+                            : row.y
                         )
-                      }
-                      onFocus={() => {
-                        setCurrRow(index);
-                      }}
-                      onKeyDown={keyHandler}
-                    />
+                        }
+                        onFocus={() => {
+                          setCurrRow(index);
+                        }}
+                        onKeyDown={keyHandler}
+                      />
                     </Box>
                   </TableCell>
                 </TableRow>
@@ -149,7 +155,7 @@ export const InputTable = (props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      
+
     </div>
   );
 };
