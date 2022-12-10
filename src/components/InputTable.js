@@ -32,27 +32,32 @@ export const InputTable = (props) => {
       >
         <Stack direction="row" spacing={3}>
           <Button
+            size='medium'
             startIcon={<AddIcon />}
             variant="outlined"
+            style={{ border: '2px solid' }}
             onClick={() => props.onAddRow(currRow)}
           >
-            Add Row Above
+          <p font-weight= "bold">Add Row Above</p>
+            
           </Button>
           <Button
             startIcon={<AddIcon />}
             variant="outlined"
+            style={{ border: '2px solid' }}
             onClick={() => props.onAddRow(currRow + 1)}
             type="button"
           >
-            Add Row Below
+            <p font-weight= "bold"> Add Row Below </p>
           </Button>
           <Button
             startIcon={<DeleteIcon />}
             variant="outlined"
+            style={{ border: '2px solid' }}
             onClick={() => rowDeleter(currRow)}
             type="button"
           >
-            Delete Row
+            <p font-weight= "bold">Delete Row</p>
           </Button>
         </Stack>
       </Box>
