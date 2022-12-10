@@ -128,7 +128,6 @@ export const InputTable = (props) => {
                         id="outlined-basic"
                         label="y value"
                         variant="outlined"
-                        autoFocus
                         value={row.y}
                         onInput={(event) => props.onRowChange(
                           index,
