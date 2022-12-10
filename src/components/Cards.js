@@ -66,7 +66,7 @@ const Cards = () => {
               sx={{ m: 3 }}>
               <TabContainer xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors} />
             </Box>
-            <Stack direction="row" spacing={2}>
+            <Stack direction="row" spacing={2} display="flex" justifyContent="space-evenly">
               <input type="radio" value="mpn65"
                 checked={PaletteColors === 'mpn65'}
                 onChange={Update_Palette} />
