@@ -25,7 +25,7 @@ ChartJS.register(
 const LineChart = (props) => {
   let labels = [];
   let quantities = [];
-  for (const pair of props.xyPairs) {
+  for (const pair of [...props.xyPairs].sort((a, b) => a.x > b.x)) {
     labels.push(pair.x);
     quantities.push(pair.y);
   }
