@@ -22,9 +22,19 @@ ChartJS.register(
 );
 
 const LineChart = (props) => {
+  const sortedPairs = [...props.xyPairs].sort((a, b) => {
+    const na = Number(a.x);
+    const nb = Number(b.x);
+
+    if (isNaN(na) || isNaN(nb)) {
+      return a.x > b.x;
+    }
+    return na > nb;
+  });
+
   let labels = [];
   let quantities = [];
-  for (const pair of [...props.xyPairs].sort((a, b) => a.x > b.x)) {
+  for (const pair of sortedPairs) {
     labels.push(pair.x);
     quantities.push(pair.y);
   }
