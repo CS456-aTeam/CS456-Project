@@ -42,9 +42,7 @@ const LineChart = (props) => {
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        position: 'top',
-      },
+      legend: { display: false },
       title: {
         display: true,
         text: props.title,
