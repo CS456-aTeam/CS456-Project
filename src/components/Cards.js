@@ -22,7 +22,7 @@ const Cards = () => {
   let [title, setTitle] = useState("");
   let [xAxisLabel, setXAxisLabel] = useState("");
   let [yAxisLabel, setYAxisLabel] = useState("");
-  const [PaletteColors, setPaletteColors] = useState("cb-Spectral");
+  const [PaletteColors, setPaletteColors] = useState("tol-rainbow");
 
   function onRowChange(row_index, attr, value) {
     setTableData(tableData.map((row, r_index) => (r_index != row_index) ?
@@ -42,6 +42,8 @@ const Cards = () => {
     console.log(event.target.value);
     setPaletteColors(event.target.value);
   }
+
+  const paletteNames = ['tol', 'tol-dv', 'tol-rainbow', 'cb-BrBG', 'cb-PRGn', 'cb-PiYG', 'cb-PuOr', 'cb-RdBu', 'cb-RdGy', 'cb-RdYlBu'];
 
   return (
     <>
@@ -67,34 +69,14 @@ const Cards = () => {
               <TabContainer xyPairs={tableData} title={title} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} PaletteSelected={PaletteColors} />
             </Box>
             <Stack direction="row" spacing={2} display="flex" justifyContent="space-evenly">
-              <input type="radio" value="mpn65"
-                checked={PaletteColors === 'mpn65'}
+            {paletteNames.map((name) =>
+              <>
+                <input type="radio" value={name}
+                checked={PaletteColors === name}
                 onChange={Update_Palette} />
-              <ColorBar colors={palette('mpn65', 4).map((s) => `#${s}`)} />
-              <input type="radio" value="tol-rainbow"
-                checked={PaletteColors === 'tol-rainbow'}
-                onChange={Update_Palette} />
-              <ColorBar colors={palette('tol-rainbow', 4).map((s) => `#${s}`)} />
-              <input type="radio" value="cb-YlOrRd"
-                checked={PaletteColors === 'cb-YlOrRd'}
-                onChange={Update_Palette} />
-              <ColorBar colors={palette('cb-YlOrRd', 4).map((s) => `#${s}`)} />
-              <input type="radio" value="cb-Spectral"
-                checked={PaletteColors === 'cb-Spectral'}
-                onChange={Update_Palette} />
-              <ColorBar colors={palette('cb-Spectral', 4).map((s) => `#${s}`)} />
-              <input type="radio" value="cb-Set3"
-                checked={PaletteColors === 'cb-Set3'}
-                onChange={Update_Palette} />
-              <ColorBar colors={palette('cb-Set3', 4).map((s) => `#${s}`)} />
-              <input type="radio" value="sol-base"
-                checked={PaletteColors === 'sol-base'}
-                onChange={Update_Palette} />
-              <ColorBar colors={palette('sol-base', 4).map((s) => `#${s}`)} />
-              <input type="radio" value="sol-accent"
-                checked={PaletteColors === 'sol-accent'}
-                onChange={Update_Palette} />
-              <ColorBar colors={palette('sol-accent', 4).map((s) => `#${s}`)} />
+                <ColorBar colors={palette(name, 4).map((s) => `#${s}`)} />
+              </>
+            )}
             </Stack>
           </Grid>
         </Grid>
